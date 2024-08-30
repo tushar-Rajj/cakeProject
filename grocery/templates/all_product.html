@@ -1,0 +1,646 @@
+{% extends 'carousel.html' %}
+{% block b %}
+{% load static %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<style>
+    .mainCard {
+		width: 160px;
+		height: 170px;
+		background: rgb(103, 225, 255);
+		transition: all 0.4s;
+		border-radius: 10px;
+		box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+		
+	  }
+	  
+	  .mainCard:hover {
+		border-radius: 15px;
+		cursor: pointer;
+	
+		box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+		background: rgb(103, 151, 255);
+	  }
+	  
+	  .first-content {
+		margin-left: 45px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		height: 150px;
+		width: 65%;
+		transition: all 0.4s;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		opacity: 1;
+		border-radius: 15px;
+	  }
+	  
+	  .mainCard:hover .first-content {
+		height: 0px;
+		opacity: 0;
+	  }
+	  
+	  .second-content {
+		margin-left: 45px;
+		margin-bottom: 10px;
+		height: 0%;
+		width: 65%;
+		opacity: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 15px;
+		transition: all 0.4s;
+		font-size: 0px;
+		transform: rotate(90deg) scale(-1);
+	  }
+	  
+	  .mainCard:hover .second-content {
+		opacity: 1;
+		height: 150px;
+		
+		transform: rotate(0deg);
+	  }
+	  
+	.mybtnone {
+		--color: #073429;
+		padding: 0.8em 1.7em;
+		color: white !important;
+		border-radius: .3em;
+		position: relative;
+		overflow: hidden;
+		cursor: pointer;
+		transition: .5s;
+		font-weight: 400;
+		font-size: 17px;
+		border: 1px solid;
+		font-family: inherit;
+		text-transform: uppercase;
+		color: var(--color);
+		z-index: 1;
+	   }
+	   
+	   .mybtnone::before, .mybtnone::after {
+		content: '';
+		display: block;
+		width: 50px;
+		height: 50px;
+		transform: translate(-50%, -50%);
+		position: absolute;
+		border-radius: 50%;
+		z-index: -1;
+		background-color: var(--color);
+		transition: 1.3s ease;
+		color: white !important;
+	   }
+	   
+	   .mybtnone::before {
+		top: -1em;
+		left: -1em;
+		color: white !important;
+	   }
+	   
+	   .mybtnone::after {
+		left: calc(100% + 1em);
+		top: calc(100% + 1em);
+		color: white !important;
+	   }
+	   
+	   .mybtnone:hover::before, .mybtnone:hover::after {
+		height: 410px;
+		width: 410px;
+		color: white !important;
+	   }
+	   
+	   .mybtnone:hover {
+		color: rgb(10, 25, 30);
+		color: white !important;
+	   }
+	   
+	   .mybtnone:active {
+		filter: brightness(.8);
+	   }
+	   
+
+
+
+	.mybtnone{
+		background-color: antiquewhite;
+		color: rgb(0, 0, 0) !important;
+		position: relative;
+        margin-top: 2px;
+        width: 70%;
+        bottom: 0px;
+		border-radius: 35px;
+		box-shadow: 2px 2px 13px 2px grey;
+		border: none;
+	}
+.mybtnone:hover{
+	background-color : #E40203
+}
+body{overflow-x: hidden;}
+.heading{
+	font-family:'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-weight: bolder;
+background-color: antiquewhite;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 6px;
+border-radius: 40px;
+margin-bottom: 10px;
+}
+
+
+.pimg1{
+    background-image: url("{% static 'images/image1.jpg' %}") ;
+    min-height: 100%;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.pimg2{
+    background-image:url("{% static 'images/home3.jpg' %}") ;
+    min-height: 400px;
+}
+.pimg3{
+    background-image:url("{% static 'images/home2.jpg' %}") ;
+    min-height: 400px;
+}
+.pimg4{
+    background-image: url(image4.jpg);
+    min-height: 400px;
+}
+.pimg5{
+    background-image: url(image5.jpg);
+    min-height: 400px;
+}
+
+
+
+.pimg1,
+.pimg2,
+.pimg3,
+.pimg4,
+.pimg5{
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+}
+.ptext{
+    position: absolute;
+    top:50%;
+    width: 100%;
+    text-align: center;
+    color: rgb(161, 73, 113);
+    font-size: 27px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+
+}
+.textBg{
+	font-family: serif;
+    font-size: 30px;
+	font-weight: bold;
+    color: rgb(255, 250, 250);
+    padding: 20px;
+}
+.textBg p{
+	font-family:cursive;
+    font-size: 15px;
+	font-weight: bold;
+    color: white;
+    padding: 20px;
+}
+.section{
+    padding: 50px 80px;
+    text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content:space-evenly;
+	align-items: center;
+	gap: 20px;
+	text-align: start;
+}
+.section-light{
+    background-color: #f4f4f4;
+    color: #666;
+
+
+}
+.section-dark{
+    background-color:  rgb(249, 222, 195);
+    color:#ddd;
+
+}
+.section-deep{
+    background-color:  #f4f4f4;
+    color:#666;
+}
+.section-walk{
+    background-color:  #282e34;
+    color:#ddd;
+
+}
+
+.img-fluid{
+	background-color: rgb(219, 96, 96) !important;
+	border-radius: 50%;
+	color: black !important;
+}
+
+
+
+.alla span{
+    
+	position: relative;
+	top: -10px;
+	left: 5px;
+	 color: rgb(200, 116, 7);
+	 background-color: rgb(87, 7, 16);
+	 box-shadow: 2px 2px 10px 2px rgb(90, 56, 56);
+	
+	 width: 40px;
+	 height: 40px;
+	 border-radius: 50%;
+   }
+ .a .allr{
+   position: relative;
+   left: 5px;
+  
+ }
+ .a .alll{
+   position: relative;
+   left: -5px;
+ }
+
+ .back{
+	background-color: rgb(249, 222, 195)!important;
+	color: black !important;
+border: none !important;
+
+ }
+
+ .float{
+	position:fixed;
+	width:40px;
+	height:40px;
+	bottom:80px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50%;
+	text-align:center;
+  font-size:120%;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+.mainbox{
+	background-color: rgb(255, 255, 255);
+	width: 100%;
+	height: 270px;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.mainimg{
+	display: inline-block;
+	position: relative;
+
+	width: 230px;
+	height: 250px;
+	
+}
+.imggg{
+	border-radius: 50% 50% 0px 0px;
+}
+
+.imggg:hover{
+	border-radius: 50% 50% 0px 0px;
+	scale: 1.1;
+	transition: all 0.8s ease-in-out;
+	cursor: pointer;
+}
+</style>
+
+<!-- <hr> -->
+
+<a href="https://wa.me/qr/A7QTSAZXLAYTD1" class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>
+<div class="mainbox">
+    <div class="mainimg"><img  class="imggg" src="{% static 'images/box1.jpeg' %}" alt="" width="245px" height="250px"></div>
+    <div class="mainimg"><img  class="imggg" src="{% static 'images/box2.jpeg' %}" alt="" width="245px" height="250px"></div>
+    <div class="mainimg"><img  class="imggg" src="{% static 'images/box3.jpeg' %}" alt="" width="245px" height="250px"></div>
+    <div class="mainimg"><img  class="imggg" src="{% static 'images/box4.jpeg' %}" alt="" width="245px" height="250px"></div>
+    <div class="mainimg"><img  class="imggg" src="{% static 'images/box5.jpeg' %}" alt="" width="245px" height="250px"></div>
+    <!-- <div class="mainimg"><img  class="imggg" src="{% static 'images/box6.jpeg' %}" alt="" width="250px" height="250px"></div> -->
+   
+  
+    
+</div>
+<section class="pimg1">
+<!--         
+    <div class="ptext">
+        <span class="textBg">
+            Parallex Website
+        </span>
+    </div> -->
+
+</section>
+
+
+
+<section class="pimg2">
+    <div class="ptext">
+        <span class="textBg">
+           All For Your sweet tooth gravings
+        </span>
+    </div>
+
+</section>
+<section class="section section-dark">
+    
+
+
+	<div class="card mb-3 back" style="max-width: 380px;">
+		<div class="row g-0">
+		  <div class="col-md-4">
+			<img src="{% static 'images/cake-story-icon6.png' %}" class="img-fluid rounded-start" alt="...">
+		  </div>
+		  <div class="col-md-8">
+			<div class="card-body">
+			  <h5 class="card-title">100% FRESH</h5>
+			  <p class="card-text">
+				With imperial flavours and supreme quality Cake Story provides your sweet tooth with flavours to soothes you.</p>
+			 
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	<div class="card mb-3 back" style="max-width: 380px;">
+		<div class="row g-0">
+		  <div class="col-md-4">
+			<img src="{% static 'images/cake-story-icon2.png' %}" class="img-fluid rounded-start" alt="...">
+		  </div>
+		  <div class="col-md-8">
+			<div class="card-body">
+			  <h5 class="card-title">VARIETY PRODUCTS</h5>
+			  <p class="card-text">
+				VARIETY PRODUCTS
+
+				Dig into our variety-some menu where you will find all kinds of desserts you can think of.
+				</p>			 
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	<div class="card mb-3 back" style="max-width: 380px;">
+		<div class="row g-0">
+		  <div class="col-md-4">
+			<img src="{% static 'images/cake-story-icon3.png' %}" class="img-fluid rounded-start" alt="...">
+		  </div>
+		  <div class="col-md-8">
+			<div class="card-body">
+			  <h5 class="card-title">EASY ORDERING</h5>
+			  <p class="card-text">
+				
+
+				Accessible to all customers by giving them the ability to order directly from our website​​​​​​​.			</p>
+			 
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+
+</section>
+
+<section class="pimg3">
+    <div class="ptext">
+        <span class="textBg">
+			Delicious | Sweet | Loved
+           <p>Celebrate  your happiness with us</p>
+        </span>
+    </div>
+
+</section>
+<section class="section section-dark">
+    
+	<div class="card mb-3 back" style="max-width: 380px;">
+		<div class="row g-0">
+		  <div class="col-md-4">
+			<img src="{% static 'images/cake-story-icon4.png' %}" class="img-fluid rounded-start" alt="...">
+		  </div>
+		  <div class="col-md-8">
+			<div class="card-body">
+			  <h5 class="card-title">DEDICATED STAFF</h5>
+			  <p class="card-text">
+				
+
+				Delicately and perfectly handled by our professional staff to provide you the best quality.			</p>
+			 
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	<div class="card mb-3 back" style="max-width: 380px;">
+		<div class="row g-0">
+		  <div class="col-md-4">
+			<img src="{% static 'images/cake-story-icon5.png' %}" class="img-fluid rounded-start" alt="...">
+		  </div>
+		  <div class="col-md-8">
+			<div class="card-body">
+			  <h5 class="card-title">HANDMADE</h5>
+			  <p class="card-text">
+				
+
+Crafted with perfection specially for our customers to serve the the perfect desserts and cakes. to soothes you.</p>
+			 
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	<div class="card mb-3 back" style="max-width: 380px;">
+		<div class="row g-0">
+		  <div class="col-md-4">
+			<img src="{% static 'images/cake-story-icon1.png' %}" class="img-fluid rounded-start" alt="...">
+		  </div>
+		  <div class="col-md-8">
+			<div class="card-body">
+			  <h5 class="card-title">TIMELY DELIVERY</h5>
+			  <p class="card-text">
+				
+
+				Order, sit back and relax, Delicious delivery will arrive at your doorstep and we won't let you wait.			</p>
+			 
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+</section>
+
+<!-- <section class="pimg3">
+    <div class="ptext">
+        <span class="textBg">
+			Delicious | Sweet | Loved
+           <p>Celebrate  your happiness with us</p>
+        </span>
+    </div>
+</section> -->
+
+
+{% for i in cat %}
+ <div class="container-fluid">
+   	<h1 class="text-center mt-5 mb-5">
+   	</h1>
+	 <h2 class= "pl-5 heading" style = "color : #211f1f ; text-transform : uppercase;" >{{i.name}}</h2>
+   	<div id="{{i.id}}" class="carousel slide" data-ride="carousel">
+   		<div class="carousel-inner row w-100 mx-auto" >
+			{% for j in pro %}
+			{% if i.name == j.category.name %}
+			{% if forloop.counter in num %}
+				<div class="carousel-item col-md-3 active" >
+					<div class="card radius mainCard " style="height: 500px ;">
+						<div class="first-content">
+							<span> <center> <a href="{% url 'view_product' 0 %}"> <img class="card-img-top img-fluid   radiusImg" align="center" src="{{j.image.url}}" style="width:160px;height:170px;float:center" alt="card-img"> </a> </center> </span>
+						  </div>
+						  <div class="second-content">
+						<span><center> <a href="{% url 'view_product' 0 %}"> <img class="card-img-top img-fluid   radiusImg" align="center" src="{{j.image.url}}" style="width:160px;height:170px;float:center" alt="card-img"> </a> </center> </span>
+						</div>
+					
+   						<div class="card-body">
+   						<h4 class="card-title">{{j.name}} Rs.{{j.price}}</h4>
+   						<p class="card-text">{{j.desc}}</p>
+							<form align="center" action="{% url 'add_cart' j.id %}" method="post">
+								{% csrf_token %}
+							<button type="submit" class="btn  mybtnone">Add to Cart</button>
+</form>
+   					</div>
+   				</div>
+   			</div>
+
+
+				{% else %}
+				<div class="carousel-item col-md-3">
+   				<div class="card radius mainCard " style="height:500px;">
+					<!-- <center> <a href="{% url 'view_product' 0 %}"> <img class="card-img-top img-fluid   radiusImg" align="center" src="{{j.image.url}}" style="width:160px;height:170px;float:center" alt="card-img"> </a></center> -->
+					<div class="first-content">
+						<span> <center> <a href="{% url 'view_product' 0 %}"> <img class="card-img-top img-fluid   radiusImg" align="center" src="{{j.image.url}}" style="width:160px;height:170px;float:center" alt="card-img"> </a> </center> </span>
+					  </div>
+					  <div class="second-content">
+					<span><center> <a href="{% url 'view_product' 0 %}"> <img class="card-img-top img-fluid   radiusImg" align="center" src="{{j.image.url}}" style="width:160px;height:170px;float:center" alt="card-img"> </a> </center> </span>
+					</div>	
+					<div class="card-body">
+   						<h4 class="card-title">{{j.name}} Rs.{{j.price}}</h4>
+   						<p class="card-text">{{j.desc}}</p>
+<form align="center" action="{% url 'add_cart' j.id %}" method="post">
+	{% csrf_token %}
+							<button type="submit" class="btn  mybtnone">Add to Cart</button>
+</form>   					</div>
+   				</div>
+   			</div>
+
+			{% endif %}
+	 		{% endif %}
+			{% endfor %}
+			<a class="carousel-control-prev " href="#{{i.id}}" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon " aria-hidden="true"></span>
+				<span class="sr-only " >Previous</span>
+			</a>
+  			    <a class="carousel-control-next " href="#{{i.id}}" role="button" data-slide="next">
+					<span class="carousel-control-next-icon " aria-hidden="true"></span>
+					<span class="sr-only ">Next</span></a>
+		</div>
+	</div>
+ </div>
+
+
+
+ 
+  
+{% endfor %}
+
+<style>
+html{
+scroll-behavior:smooth;
+}
+
+
+/*scroll button start*/
+#scrollbtn
+{
+
+position:fixed;
+bottom:20px;
+right:40px;
+z-index:99;
+border:none;
+color:rgb(220, 219, 219);
+background:#3a012b;
+padding:12px;
+border-radius:50%;cursor: pointer;
+}
+/*scroll button end*/
+</style>
+
+ <div class="scrolltop float-right">
+  <i class="fa fa-arrow-up" onclick="topFunction()" id="scrollbtn"></i>
+  </div>
+  {% include 'Footer.html'%}
+ 
+
+<script>
+  scrollbutton = document.getElementById("scrollbtn"); 
+  window.onscroll = function(){scrollFunction()};
+  
+  function scrollFunction()
+  {
+  if(document.body.scrollTop>20 || document.documentElement.scrollTop>20)
+  {
+  scrollbutton.style.display="block";
+  }
+  else
+  {
+  scrollbutton.style.display="none";
+  }
+  }
+  
+  function topFunction()
+  {
+  document.body.scrollTop = 0;//safari
+  document.documentElement.scrollTop = 0;//for chrome
+  }
+</script>  
+  
+  
+  
+  
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ <script src="{% static 'js/jquery.js' %}"></script>
+ 
+{% endblock %}
+

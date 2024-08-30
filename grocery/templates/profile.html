@@ -1,0 +1,121 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+<style>
+    .mybtnone3{
+        background-color: rgb(213, 222, 133);
+        color: rgb(0, 0, 0) !important;
+        position: relative;
+            margin-top: 2px;
+            width: 20%;
+            bottom: 0px;
+        border-radius: 35px;
+        box-shadow: 1px 1px 13px 1px rgb(22, 22, 22);
+        border: none;
+        
+      }
+      .mybtnone3:hover{
+      background-color : #20af00
+      }
+      .h{
+        background-color: rgba(0, 0, 0, 0.106) !important ;
+       
+      }
+      .body{
+        background-color: rgba(45, 178, 132, 0.695);
+        background-image: url("{% static 'images/AboutCake3.jpg' %}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+       
+        padding-bottom: 20px;
+        padding-top: 20px;
+        width: 100% !important;
+        height: 44rem !important;
+        
+        z-index: 1;
+      }
+      .body h2{
+        color: rgb(255, 255, 255);
+        background-color: rgba(206, 203, 203, 0.056);
+        border-radius: 50px;
+        padding: 5px;
+      
+      }
+      .container-fluid{
+        border-radius: 20px;
+        padding: 40px;
+        background-color: white !important;
+        background-color: rgba(0, 0, 0, 0.585)  !important; /* Black w/opacity/see-through */
+      z-index: 2 !important;
+      color: rgb(255, 255, 255) !important;
+      }
+     
+</style>
+<div class="body">
+<div class="container back">
+  
+
+<div  class="container-fluid h" style="width:55%;margin-bottom:5%; color:white;font-size:15px">
+    <hr><div class="row">
+        <div class="col-md-6">
+            <strong>Full Name:</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.user.first_name}} {{pro.user.last_name}}
+        </div>
+    </div><hr>
+     <div class="row">
+        <div class="col-md-6">
+            <strong>Customer Pic:</strong>
+        </div>
+        <div class="col-md-6">
+           <img  src="{{pro.image.url}}" style="width:130px;height:130px; border-radius:50%">
+        </div>
+
+    </div><hr>
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Email Id :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.user.email}}
+        </div>
+    </div><hr>
+     <div class="row">
+        <div class="col-md-6">
+            <strong>Contact :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.contact}}
+        </div>
+     </div><hr>
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Date of Birth :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.dob}}
+        </div>
+    </div><hr>
+     <div class="row">
+        <div class="col-md-6">
+            <strong>City :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.city}}
+        </div>
+     </div><hr><div class="row">
+        <div class="col-md-6">
+            <strong>Address :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.address}}
+        </div>
+    </div><hr>
+    <a href="{% url 'edit_profile' %}"><button class="btn btn-primary mybtnone3" style="width:100%;margin-bottom:5%">Edit Profile</button></a>
+
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+
+
+<style>
+
+   
+  
+  .a span{
+   
+   position: relative;
+   top: -70px;
+   left: 5px;
+    color: rgb(200, 116, 7);
+    background-color: rgb(87, 7, 16);
+    box-shadow: 2px 2px 10px 2px rgb(90, 56, 56);
+   
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+.a .r{
+  
+  
+  position: relative;
+  left: 25px;
+}
+.a .l{
+  position: relative;
+  left: -45px;
+}
+
+
+</style>
+
+<!-- #video-container {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  top: -20%;
+  background-color: aqua;
+}
+
+#video-container #play {
+
+ 
+}
+video {
+  position: relative;
+  display: inline-block;
+  right: -70%;
+top: 0%;
+  width: 25%;
+  margin: 40px;
+  border-radius: 20px;
+}
+
+
+
+<div id="video-container">
+  <div id="play"> </div>
+  <video autoplay loop muted src="{% static 'images/Slide2.mp4' %}"></video>
+</div> -->
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+    <li data-target="#demo" data-slide-to="3"></li>
+    <li data-target="#demo" data-slide-to="4"></li>
+   
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner" style="width:97%; height:370px; margin:20px ; border-radius:20px ; margin-top:10px; margin-left:20px; margin-bottom:10px">
+    <div class="carousel-item active">
+      <a href="{% url 'view_product' 0 %}">
+
+      <img style="background-size: cover; height:370px" src="{% static 'images/slide1.jpg' %}" alt="Los Angeles" >
+    </a>
+    </div>
+    <!-- ll -->
+    <div class="carousel-item">
+      <a href="{% url 'view_product' 0 %}">
+      <img style="background-size: cover; height:370px" src="{% static 'images/slide2.jpg' %}"  alt="Chicago" >
+   </a>
+    </div>
+
+    <!-- ll -->
+    <!-- <div class="carousel-item ">
+      <img src="{% static 'images/slide3.jpg' %}" alt="New York" style="height:320px">
+    </div> -->
+
+    <div class="carousel-item">
+      <a href="{% url 'view_product' 0 %}">
+      <img style="background-size: cover; height:370px" src="{% static 'images/slide3.jpg' %}" alt="New York" >
+   </a>
+    </div>
+
+    <div class="carousel-item">
+      <a href="{% url 'view_product' 0 %}">
+      <img style="background-size: cover; height:370px" src="{% static 'images/cake7.png' %}" alt="New York" >
+    </a>
+    </div>
+ <div class="carousel-item">
+  <a href="{% url 'view_product' 0 %}">
+      <img style="background-size: cover; height:370px" src="{% static 'images/Slide7.png' %}" alt="New York" >
+    </a>
+  </div>
+    
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev a" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon l"></span>
+  </a>
+  <a class="carousel-control-next a" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon r"></span>
+  </a>
+</div> 
+
+
+{% block b %}
+{% endblock %}
+
+
+
+{% endblock %}

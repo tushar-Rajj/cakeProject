@@ -1,0 +1,125 @@
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+
+<style>
+  .body{
+    background-color: rgba(45, 178, 132, 0.695);
+    background-image: url("{% static 'images/AboutCake3.jpg' %}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100% !important;
+    height: 42rem !important;
+    
+    z-index: 1;
+  }
+  .body h2{
+    color: rgb(255, 255, 255);
+    background-color: rgba(206, 203, 203, 0.056);
+    border-radius: 50px;
+    padding: 5px;
+  
+  }
+  .container-fluid{
+    border-radius: 20px;
+    padding: 20px;
+
+   
+    background-color: rgba(0, 0, 0, 0.396)  !important; /* Black w/opacity/see-through */
+  z-index: 2 !important;
+  color: antiquewhite !important;
+  }
+  .mybtnone3{
+    background-color: rgb(213, 222, 133);
+    color: rgb(0, 0, 0) !important;
+    position: relative;
+        margin-top: 2px;
+        width: 20%;
+        bottom: 0px;
+    border-radius: 35px;
+    box-shadow: 1px 1px 13px 1px rgb(22, 22, 22);
+    border: none;
+  }
+  .mybtnone3:hover{
+  background-color : #20af00
+  }
+</style>
+<div class="body">
+<div class="container">
+    <h2 style="margin-top:20px ;  padding-top:10px"  align="center">Registration Form</h2><hr>
+
+<div class="container-fluid" style="width:70%;">
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">First Name</label>
+      <input type="text" class="form-control" placeholder="Enter First Name" name="fname" id="inputEmail4">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Last Name</label>
+      <input type="text" class="form-control" name="lname" placeholder="Enter Last Name" id="inputPassword4">
+    </div>
+  </div>
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">User Name</label>
+      <input type="text" class="form-control" name="uname" placeholder="Enter User Name" id="inputEmail4">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" name="pwd" id="inputPassword4">
+    </div>
+  </div>
+        <div class="form-row">
+<div class="form-group col-md-6">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Enter Email">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Contact</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Contact Detail" name="contact">
+  </div>
+        </div>
+        <div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">City</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter City" name="city">
+  </div>
+
+    <div class="form-group col-md-6">
+        <label for="exampleInputPassword1">Date of Birth</label>
+    <input type="date" class="form-control" id="exampleInputPassword1" name="date">
+  </div>
+        </div>
+    <div class="form-row">
+
+    <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Full Address</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Address Detail" name="add">
+  </div>
+
+<div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Image</label>
+    <input type="file" class="form-control" id="exampleInputPassword1" name="img" value="choose file">
+</div></div>
+
+  <button type="submit" class="btn btn-primary mybtnone3">Submit</button>
+</form>
+</div>
+</div>
+</div>
+
+{% if error %}
+<script>
+    alert('Regitered Successfully');
+    window.location = "{% url 'login' %}";
+</script>
+{% endif %}
+
+{% endblock %}

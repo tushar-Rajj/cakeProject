@@ -1,0 +1,94 @@
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('logged in successfully');
+    window.location=('{% url 'home' %}');
+</script>
+{% endifequal %}
+{% ifequal error "not" %}
+<script>
+  
+    alert('Username & Password are not Matching');
+</script>
+{% endifequal %}
+
+<style>
+  
+.mybtnone:hover{
+  background-color : #E40203
+  }
+.body{
+  background-color: rgba(45, 178, 132, 0.695);
+  background-image: url("{% static 'images/AboutCake3.jpg' %}");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+  padding-bottom: 20px;
+  padding-top: 20px;
+  width: 100% !important;
+  height: 42rem !important;
+  
+  z-index: 1;
+}
+.body h2{
+  color: rgb(255, 255, 255);
+  background-color: rgba(206, 203, 203, 0.056);
+  border-radius: 50px;
+  padding: 5px;
+
+}
+.container-fluid{
+  border-radius: 20px;
+  padding: 40px;
+  background-color: white !important;
+  background-color: rgba(0, 0, 0, 0.539)  !important; /* Black w/opacity/see-through */
+z-index: 2 !important;
+color: antiquewhite !important;
+}
+
+.mybtnone3{
+  background-color: rgb(213, 222, 133);
+  color: rgb(0, 0, 0) !important;
+  position: relative;
+      margin-top: 2px;
+      width: 20%;
+      bottom: 0px;
+  border-radius: 35px;
+  box-shadow: 1px 1px 13px 1px rgb(22, 22, 22);
+  border: none;
+  
+}
+.mybtnone3:hover{
+background-color : #20af00
+}
+</style>
+<div class="body">
+<div class="container">
+    <h2 style="margin-top:20px ;  padding-top:10px"  align="center">User Login Form</h2><hr>
+
+<div class="container-fluid" style="width:70%;margin-top:10%">
+<form method="post" action="" novalidate class="needs-validation">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="uname" placeholder="Enter Username" required />
+  </div>
+  <div class="valid-feedback">Title Look Goods </div>
+  <div class="invalid-feedback"> Please provide UserName </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pwd">
+  </div>
+  <button type="submit" class="btn btn-primary mybtnone3">Login</button>
+  <button class="btn btn-primary mybtnone3"><a href="{% url 'signup' %}" style="color:rgb(0, 0, 0)">Signup</a></button>
+</form>
+</div>
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,209 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+
+
+    <style>
+      
+       
+      
+        .home{
+          
+          height: 40vw;
+          width: 99vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      
+        }
+        .h1{
+          font-size: 40px;
+          text-shadow: 2px 2px  rgb(213, 143, 51);
+        }
+        .p{
+          font-size: 20px;
+        }
+        .textp{
+            padding-left: 30px;
+          font-size: 16px;
+          text-align:left;
+          text-wrap: wrap;
+         
+        
+        
+        }
+        .span{
+          color: red;
+        }
+        .buttonn{
+          background-color: rgb(255, 255, 255);
+          font-size: 1.3rem;
+          border-radius: 30px;
+          margin: 6px;
+          border: none;
+          box-shadow: 3px 2px 7px 2px rgb(45, 44, 44);
+          cursor: pointer;
+          box-sizing: content-box;
+        }
+        .buttonn:hover{
+          font-size: 22px;
+          box-shadow: -2px 3px 7px 2px rgb(0, 0, 0);
+        }
+        .text{
+      
+          /* border: 1px solid green; */
+          width: 60%;
+          text-align:center;
+       
+      
+        }
+        .imgbox{
+          width: 40%;
+          height: 300px;
+          /* border:  1px solid yellow; */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        .Aboutmybtnone{
+            background-color: rgb(155, 121, 87);
+            color: white;
+            position: relative;
+            margin-top: 2px;
+            width: 40%;
+            padding: 10px;
+           font-size: 18px;
+           font-weight: bold;
+            border-radius: 35px;
+            box-shadow: 1px 1px 7px 1px grey;
+            border: none;
+        }
+    .Aboutmybtnone:hover{
+        background-color : #655a20;
+        transition: all 1s ease-in;
+        
+    }
+    .imgg{
+        height: 80%;
+        width: 90%;
+        border-radius: 50% 50% 0px 0px;
+    }
+    .imgg:hover{
+
+        height: 80%;
+        width: 90%;
+        background-blend-mode:darken;
+        border-radius: 50% 50% 0px 0px;
+        transition: all 1s ease-in-out;
+    }
+
+
+      </style>
+
+
+<div class="home">
+    <div class="text">
+        <h1 class="h1"> <i>About Us</i></h1>
+        <p class="textp"> <i>Cake World</i> is an FSSAI-certified bakery where every dessert tells a story! <br> Our bakery came to light intending to make your remarkable occasions even sweeter and more memorable. We bake perfection with quality ingredients into impeccable cakes, pastries, brownies, cupcakes, and much more. We specialise in delivering exuberant smiles to our customers in around 30 cities across India, including Delhi, Mumbai, Bengaluru, Hyderabad, Ahmedabad, Chennai, Kolkata, Pune, and so forth. Bakingo is a haven for dessert lovers who want to indulge in scrumptious treats and fill their celebrations with cherished memories.</p>
+        <!-- <p class="p">I am a <span class="span">Frontend Developer</span></p> -->
+        <a href="{% url 'view_product' 0 %}">
+        <button type="submit" class="btn  Aboutmybtnone">Add to Cart</button>
+        </a>
+    </div>
+    <div class="imgbox">
+        <div class="imgbox1">
+            <img class="imgg" src="{% static 'images/AboutCake3.jpg' %}" alt="" height="500px">
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- .imgbox1{
+    overflow: hidden;
+  width:auto;
+  height: 400px;
+  
+  border-radius: 20%;
+ 
+}
+.imgbox1:hover{
+ 
+  position: relative;
+  bottom: 10px;
+  box-shadow: 2px 2px 10px 2px rgb(75, 74, 74);
+
+ 
+
+} -->
+
+    <script>
+  
+        const span=document.querySelector(".span");
+        
+        setInterval(() => {
+          span.innerHTML="Frontend Developer";
+          span.style.color="red";
+          span.style.transform="All 8s ease";
+        }, 3000);
+      
+        setInterval(() => {
+          span.innerHTML="Backend Developer";
+          span.style.color="green";
+        }, 4000);
+      
+          let time=gsap.timeline()
+      gsap.from("nav ul li ,.logo h2  .text h1  .text p, .text p span",{
+          y:-100,
+          duration:2,
+          delay:1,
+          opacity:0,
+          stagger:0.2
+      
+      
+      })
+      time.from(".text h1 , .text p , .text input",{
+          x:-100,
+          duration:2,
+          delay:1,
+          opacity:0,
+          stagger:0.2
+      
+      
+      })
+      
+      time.from(".img",{
+          y:100,
+          duration:1,
+          delay:0,
+          opacity:0,
+          stagger:0.2
+      
+      
+      })
+</script>
+
+
+
+<!-- <div class="container" style = "margin-top : 150px">
+      <h2 class = text-center style = "font-family : 'Monotype Corsiva' ; color : #E6120E">About Us</h2>
+      <div class="row">
+          <div class="col-sm-4 prjdiv">
+              <img src="{% static 'images/abt.jpg' %}" width=300 height = 200 class="img-responsive">        
+          </div>
+          <div class="col-sm-8 prjdiv" style = "font-weight : bold ; margin-top : 30px">
+              Hola folks!
+It looks like you are here to know us better. Clothes Booking is a user friendly, easy to use website where 
+one can order clothes by just search products and fill up a simple products order form available on the website. 
+Admin can see the product order request and deliver product.
+ To use all these features you need to login first . 
+So register fast and order products.
+          </div>
+      </div>
+  </div> -->
+  
+
+  {%include "Footer.html"%}
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends 'navigation.html' %}
+{% block body %}
+<style>
+  .mybtnoneDetails{
+    background-color: rgb(133, 194, 222);
+    color: rgb(0, 0, 0) !important;
+    position: relative;
+        margin-top: 2px;
+        width: 100px;
+        bottom: 0px;
+    border-radius: 35px;
+    box-shadow: 1px 1px 13px 1px rgb(150, 150, 150);
+    border: none;
+    
+  }
+  .mybtnoneDetails:hover{
+  background-color : #0066af
+  }
+ 
+  .mybtnonedelete{
+    background-color: rgb(211, 105, 52);
+    color: rgb(0, 0, 0) !important;
+    position: relative;
+        margin-top: 2px;
+        width: 100%;
+        bottom: 0px;
+    border-radius: 35px;
+    box-shadow: 1px 1px 13px 1px rgb(150, 150, 150);
+    border: none;
+    
+  }
+  .mybtnonedelete:hover{
+  background-color : #d10404
+  }
+  .green {
+    border-radius: 35px;
+    box-shadow: 1px 1px 13px 1px rgb(150, 150, 150);
+    background-color: rgb(21, 199, 21);
+    width: 100px;
+  }
+  .green:hover{
+    background-color: green;
+  }
+  
+  .blue {
+    border-radius: 35px;
+    box-shadow: 1px 1px 13px 1px rgb(150, 150, 150);
+    background-color: rgb(170, 29, 183);
+    width: 100px;
+  }
+  .blue:hover {
+    background-color: rgb(225, 0, 255);
+    
+  }
+  
+  .red {
+    border-radius: 35px;
+    box-shadow: 1px 1px 13px 1px rgb(150, 150, 150);
+    background-color: rgb(189, 41, 41);
+    width: 100px;
+  }
+  .red:hover {
+    background-color: red;
+  }
+  
+</style>
+<center><h2 style="color:red;margin-top:1%">View Booking</h2></center><hr>
+<div class="container" style="margin-top:2%">
+</div>
+ <div class="container">
+<table class="table table-bordered" id="myTable">
+  <thead>
+  <tr>
+    <th>Sr. No</th>
+    <th>Booking ID</th>
+    <th>Booking Date</th>
+    <th>Customer name</th>
+    <th>Email Id</th>
+      <th>Quantity</th>
+      <th>Total</th>
+      <th>Status</th>
+    <th>View Product</th>
+    <th>Cancel Booking</th>
+  </tr>
+  </thead>
+   <tbody>
+
+{% for i in book %}
+
+  <tr>
+      <td>{{forloop.counter}}</td>
+    <td>{{i.booking_id}}</td>
+    <td>{{i.book_date}}</td>
+    <td>{{i.profile.user.username}}</td>
+    <td>{{i.profile.user.email}}</td>
+      <td>{{i.quantity}}</td>
+      <td>{{i.total}}</td>
+      <td>
+        <a href="{% url 'Edit_status' i.booking_id i.id %}">
+          <button class="button mybtnonestatus {% if i.status.name == 'delivered' %}green{% elif i.status.name == 'in progress' %}blue{% else %}red{% endif %}">
+            {{ i.status.name }}
+          </button>
+        </a>
+      </td>
+      
+    <!-- <td><a href="{% url 'Edit_status' i.booking_id i.id %}"><button class="button mybtnonestatus">{{i.status.name}}</button></a></td> -->
+      <td><a href="{% url 'admin_booking_detail' i.booking_id i.id i.profile.user.id  %}"><button class="button mybtnoneDetails">detail</button></a></td>
+      <td><a href="{% url 'delete_admin_booking' i.booking_id i.id %}" onclick="return confirm('Are you sure?')"><button class="button mybtnonedelete" id="#delete">cancel</button></a></td>
+  </tr>
+   {% endfor %}
+    </tbody>
+</table>
+ </div>
+<script>
+            var el_up = document.getElementById("GFG_UP");
+
+            el_up.innerHTML =
+                "Click on the LINK for further confirmation.";
+        </script>
+{% endblock %}

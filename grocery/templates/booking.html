@@ -1,0 +1,105 @@
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+
+<style>
+  .body{
+    background-color: rgba(45, 178, 132, 0.695);
+    background-image: url("{% static 'images/AboutCake3.jpg' %}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100% !important;
+    height: 42rem !important;
+    
+    z-index: 1;
+  }
+  .body h2{
+    color: rgb(255, 255, 255);
+    background-color: rgba(206, 203, 203, 0.056);
+    border-radius: 50px;
+    padding: 5px;
+  
+  }
+  .container-fluid{
+    box-shadow: 2px 3px 10px 3px gray;
+    border-radius: 20px;
+    padding: 25px;
+    background-color: white !important;
+    background-color: rgba(0, 0, 0, 0.539)  !important; /* Black w/opacity/see-through */
+  z-index: 2 !important;
+  color: antiquewhite !important;
+  }
+</style>
+
+<div class="body">
+<div class="container" >
+    <h2 style="margin-top:20px; padding-top:10px" align="center">Confirm Booking Detail</h2><hr>
+
+<div class="container-fluid" style="width:70%;margin-top:5%">
+<form method="post" action="" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Booking Id</label>
+      <input type="text" class="form-control" name="book_id" value="{{book_id}}" id="inputEmail4" readonly>
+    </div>
+    
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Customer Name</label>
+      <input type="text" class="form-control" name="name" value="{{request.user.username}}" id="inputPassword4" readonly>
+    </div>
+  </div>
+    <div class="form-row">
+
+        <div class="form-group col-md-6">
+      <label for="inputEmail4">Booking Date</label>
+      <input type="text" class="form-control" name="date1" value="{{date1}}" id="inputEmail4" readonly>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Email</label>
+      <input type="email" class="form-control" name="email" value="{{request.user.email}}" id="inputPassword4" readonly>
+    </div>
+  </div>
+        <div class="form-row">
+<div class="form-group col-md-6">
+    <label for="exampleInputEmail1">City</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="city" value="{{data.city}}" readonly>
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Contact</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{data.contact}}" name="contact" readonly>
+  </div>
+        </div>
+        <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="exampleInputPassword1">Address</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" name="add" value="{{data.address}}" readonly>
+  </div>
+        </div>
+
+    <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="exampleInputPassword1">Total</label>
+    <input type="number" class="form-control" id="exampleInputPassword1" value="{{total}}" name="total" readonly>
+  </div>
+    </div>
+
+  <button style="margin-bottom:5%" type="submit" class="btn btn-primary">confirm</button>
+</form>
+</div>
+</div>
+</div>
+{% if error %}
+<script>
+    alert('Regitered Successfully');
+    window.location = "{% url 'login' %}";
+</script>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+<style>
+  .body{
+    background-color: rgba(45, 178, 132, 0.695);
+    background-image: url("{% static 'images/AboutCake3.jpg' %}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100% !important;
+    height: 42rem !important;
+    
+    z-index: 1;
+  }
+  .body h2{
+    color: rgb(255, 255, 255);
+    background-color: rgba(206, 203, 203, 0.056);
+    border-radius: 50px;
+    padding: 5px;
+  
+  }
+  .container-fluid{
+    border-radius: 20px;
+    padding: 20px;
+
+   
+    background-color: rgba(0, 0, 0, 0.396)  !important; /* Black w/opacity/see-through */
+  z-index: 2 !important;
+  color: antiquewhite !important;
+  }
+  .mybtnone3{
+    background-color: rgb(213, 222, 133);
+    color: rgb(0, 0, 0) !important;
+    position: relative;
+        margin-top: 2px;
+        width: 20%;
+        bottom: 0px;
+    border-radius: 35px;
+    box-shadow: 1px 1px 13px 1px rgb(150, 150, 150);
+    border: none;
+    
+  }
+  .mybtnone3:hover{
+  background-color : #20af00
+  }
+</style>
+<div class="body">
+<div class="container">
+    <h2 style="margin-top:20px ;  padding-top:10px" align="center">Send Feedback</h2><hr>
+
+<div class="container-fluid" style="width:70%;margin-top:2%">
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Date</label>
+      <input type="text" class="form-control"  name="date" value="{{date1}}" id="inputEmail4" readonly>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Username</label>
+      <input type="text" class="form-control" name="uname" value="{{request.user.username}}" id="inputPassword4" readonly>
+    </div>
+  </div>
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" name="email" value="{{request.user.email}}" id="inputEmail4" readonly>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Contact</label>
+      <input type="number" class="form-control" name="contact" value="{{pro.contact}}" id="inputPassword4" readonly>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" name="desc" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary mybtnone3">Submit</button>
+</form>
+</div>
+</div>
+</div>
+{% if error %}
+<script>
+    alert('Send feedback Successfully');
+</script>
+{% endif %}
+
+{% endblock %}
